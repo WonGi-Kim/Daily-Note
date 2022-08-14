@@ -16,6 +16,11 @@
 		B2079EC528A936EA00AD7B8A /* Daily_NoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2079EC428A936EA00AD7B8A /* Daily_NoteTests.swift */; };
 		B2079ECF28A936EA00AD7B8A /* Daily_NoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2079ECE28A936EA00AD7B8A /* Daily_NoteUITests.swift */; };
 		B2079ED128A936EA00AD7B8A /* Daily_NoteUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2079ED028A936EA00AD7B8A /* Daily_NoteUITestsLaunchTests.swift */; };
+		B2079EDE28A93F6300AD7B8A /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2079EDD28A93F6300AD7B8A /* NoteCell.swift */; };
+		B2079EE028A93FDB00AD7B8A /* StarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2079EDF28A93FDB00AD7B8A /* StarViewController.swift */; };
+		B2079EE228A942D600AD7B8A /* StarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2079EE128A942D600AD7B8A /* StarCell.swift */; };
+		B2079EE428A9448D00AD7B8A /* WriteNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2079EE328A9448D00AD7B8A /* WriteNoteViewController.swift */; };
+		B2079EE628A944E200AD7B8A /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2079EE528A944E200AD7B8A /* NoteDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		B2079ECA28A936EA00AD7B8A /* Daily NoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Daily NoteUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2079ECE28A936EA00AD7B8A /* Daily_NoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily_NoteUITests.swift; sourceTree = "<group>"; };
 		B2079ED028A936EA00AD7B8A /* Daily_NoteUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily_NoteUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B2079EDD28A93F6300AD7B8A /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		B2079EDF28A93FDB00AD7B8A /* StarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarViewController.swift; sourceTree = "<group>"; };
+		B2079EE128A942D600AD7B8A /* StarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCell.swift; sourceTree = "<group>"; };
+		B2079EE328A9448D00AD7B8A /* WriteNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNoteViewController.swift; sourceTree = "<group>"; };
+		B2079EE528A944E200AD7B8A /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +113,11 @@
 				B2079EAF28A936E700AD7B8A /* SceneDelegate.swift */,
 				B2079EB128A936E700AD7B8A /* ViewController.swift */,
 				B2079EB328A936E700AD7B8A /* Main.storyboard */,
+				B2079EE528A944E200AD7B8A /* NoteDetailViewController.swift */,
+				B2079EE328A9448D00AD7B8A /* WriteNoteViewController.swift */,
+				B2079EE128A942D600AD7B8A /* StarCell.swift */,
+				B2079EDF28A93FDB00AD7B8A /* StarViewController.swift */,
+				B2079EDD28A93F6300AD7B8A /* NoteCell.swift */,
 				B2079EB628A936EA00AD7B8A /* Assets.xcassets */,
 				B2079EB828A936EA00AD7B8A /* LaunchScreen.storyboard */,
 				B2079EBB28A936EA00AD7B8A /* Info.plist */,
@@ -259,8 +274,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2079EB228A936E700AD7B8A /* ViewController.swift in Sources */,
+				B2079EE628A944E200AD7B8A /* NoteDetailViewController.swift in Sources */,
+				B2079EE228A942D600AD7B8A /* StarCell.swift in Sources */,
 				B2079EAE28A936E700AD7B8A /* AppDelegate.swift in Sources */,
 				B2079EB028A936E700AD7B8A /* SceneDelegate.swift in Sources */,
+				B2079EDE28A93F6300AD7B8A /* NoteCell.swift in Sources */,
+				B2079EE028A93FDB00AD7B8A /* StarViewController.swift in Sources */,
+				B2079EE428A9448D00AD7B8A /* WriteNoteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

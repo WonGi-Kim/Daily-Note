@@ -7,6 +7,11 @@
 
 import UIKit
 
+// delegate를 통해서 일기장 리스트 화면에 일기가 작성된 노트 객체를 전달
+protocol WriteNoteViewDelegate: AnyObject {
+    func didSelectRegister(note: DailyNote)
+}
+
 class WriteNoteViewController: UIViewController {
 
     @IBOutlet var titleTextField: UITextField!
@@ -18,6 +23,7 @@ class WriteNoteViewController: UIViewController {
     private let datePicker = UIDatePicker()
     // 데이트 피커에서 설정된 데이트를 저장하는 프로퍼티
     private var noteDate: Date?
+    weak var delegate: WriteNoteViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +33,7 @@ class WriteNoteViewController: UIViewController {
         self.confirmButton.isEnabled = false
     }
     
-    //일기를 쓰는 UITextView의 테두리를 설정하는 함수
+    // 일기를 쓰는 UITextView의 테두리를 설정하는 함수
     private func configureContentsTextView() {
         let borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0)
         self.contentsTextView.layer.borderColor = borderColor.cgColor // layer관련 컬러는 cg컬러로 작성해야한다.
@@ -35,11 +41,15 @@ class WriteNoteViewController: UIViewController {
         self.contentsTextView.layer.cornerRadius = 5.0
     }
     
+    //
     private func configureDatePicker() {
         self.datePicker.datePickerMode = .date
         self.datePicker.preferredDatePickerStyle = .wheels
+        // addTarget메소드는 UIController객체가 이벤트에 응답하는 방식을 설정하는 메소드
+        // 액션에는 이벤트가 발생했을때 이에 응답하여 호출될 메소드를 셀렉터를 이용해 전달
+        // for 어떤 이벤트가 일어났을때 액션에 정의한 메소드를 호출할지 결정
         self.datePicker.addTarget(self, action: #selector(datePickerValueDidChange(_:)), for: .valueChanged)
-        self.datePicker.locale = Locale(identifier: "ko-KR")
+        self.datePicker.locale = Locale(identifier: "ko-KR") // 아이폰에서는 코드없이 한국식으로 표기 되지만 맥에서 빌드시 달라짐
         self.dateTextField.inputView = self.datePicker
     }
     
@@ -50,6 +60,14 @@ class WriteNoteViewController: UIViewController {
     }
     
     @IBAction func confirmButton(_ sender: UIBarButtonItem) {
+        // 일기를 작성하고 등록버튼을 눌렀을 때 노트 객체를 생성하고 delegate에 정의한 didselectregister 메소드를 호출하여
+        // 메소드 파라미터에 생성된 노트 객체를 전달
+        guard let title = self.titleTextField.text else { return }
+        guard let contents = self.contentsTextView.text else { return }
+        guard let date = self.noteDate else { return }
+        let note = DailyNote(title: title, contents: contents, date: date, isStar: false)
+        self.delegate?.didSelectRegister(note: note)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc private func datePickerValueDidChange(_ dataPicker: UIDatePicker){

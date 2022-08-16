@@ -21,6 +21,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.configureCollectionView()
         self.loadNoteList()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(editNoteNotification(_:)),
+            name: NSNotification.Name("editNote"),
+            object: nil
+        )
+    }
+    
+    @objc func editNoteNotification(_ notification: Notification){
+        guard let note = notification.object as? DailyNote else { return }
+        guard let row = notification.userInfo?["indexPath.row"] as? Int else { return }
+        self.noteList[row] = note
+        self.noteList = self.noteList.sorted(by: {
+            $0.date.compare($1.date) == .orderedDescending
+        })
+        self.CollectionView.reloadData()
     }
     
     // noteList에서 추가된 일기를 CollectionView에 표시되도록 구현

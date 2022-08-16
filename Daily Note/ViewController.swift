@@ -114,3 +114,23 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: (UIScreen.main.bounds.width / 2) - 20 , height: 200)
     }
 }
+
+// NoteDetailViewController 에 타이틀과 내용등을 보내는 코드
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: "NoteDetailViewController") as? NoteDetailViewController else { return }
+        let note = self.noteList[indexPath.row]
+        viewController.note = note
+        viewController.indexPath = indexPath
+        viewController.delegate = self
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+// Delegate를 이용하여 작성한 일기 삭제
+extension ViewController: NoteDetailViewDelegate {
+    func didSelectDelete(indexPath: IndexPath) {
+        self.noteList.remove(at: indexPath.row)
+        self.CollectionView.deleteItems(at: [indexPath])
+    }
+}
